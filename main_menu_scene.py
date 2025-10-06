@@ -24,7 +24,7 @@ class MainMenuScene(Scene):
             SceneState.MAP_EDITOR
         )))
 
-        self.active_elements.append(self.create_button((0,200), 'Exit', self.ui_manager, lambda: pygame.event.post(pygame.QUIT)))
+        self.active_elements.append(self.create_button((0,200), 'Exit', self.ui_manager, lambda: pygame.event.post(pygame.event.Event(pygame.QUIT))))
     
     def draw(self, surface):
         super().draw(surface)
@@ -33,7 +33,7 @@ class MainMenuScene(Scene):
         self.ui_manager.draw_ui(surface)
 
     def event_update(self, event):
-        if event.type == pygame_gui.UI_BUTTON_PRESSED:
+        if event.type == UI_BUTTON_PRESSED:
             if event.ui_element in self.active_elements:
                 event.ui_element.on_click()
         

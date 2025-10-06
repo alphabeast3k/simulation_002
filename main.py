@@ -41,9 +41,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit_game()
-
             
-
+            # hacky work around to switch to main menu with M key
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_m:
+                    scene_manager.set_scene(SceneState.MAIN_MENU)
+            
             ui_manager.process_events(event)
             scene_manager.event_update(event)
 

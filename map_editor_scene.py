@@ -1,4 +1,5 @@
 from scene import Scene, SceneState
+from tile import Tile, TileType
 import math
 import pygame
 
@@ -23,16 +24,10 @@ class MapEditorScene(Scene):
         #draw a square the size of the height
         square_size = surface.get_height()
         square_color = (255, 0, 0)
-        pygame.draw.rect(surface, square_color, (0, 0, square_size, square_size))
+        map_area : pygame.Rect = pygame.draw.rect(surface, square_color, (0, 0, square_size, square_size))
 
-        hex_points = hexagon((300, 300), 20, 90)
-        pygame.draw.polygon(surface, (0, 255, 0), hex_points)
-
-        hex_points_1 = hexagon((331, 318), 20, 90)
-        pygame.draw.polygon(surface, (0, 200, 0), hex_points_1)
-
-        hex_points_1 = hexagon((331, 282), 20, 90)
-        pygame.draw.polygon(surface, (0, 150, 0), hex_points_1)
+        grass_tile = Tile(TileType.GRASS)
+        grass_tile.draw(surface, (0, 0), square_size)
 
         # Additional drawing for the map editor can be added here
 
